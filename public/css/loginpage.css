@@ -1,0 +1,18 @@
+body{
+    color: #c5580f;
+    background-color: rgb(215, 200, 255);
+}
+.custom-cont{
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+}
+.custom-btn{
+    color: white;
+    background-color: #0d0180;
+    width: 100%;
+}
+.custom-btn:hover{
+    color: white;
+    background-color: #1f0cc2;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/mainpage.css" rel="stylesheet" />
+    <style>
+      @media (max-width: 576px) {
+        .btn {
+          width: 100%; /* Full-width buttons on extra small screens */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar with integrated toggle button -->
+    <div class="sidebar" id="sidebar">
+      <!-- Toggle Button -->
+      <button class="toggle-btn" onclick="toggleSidebar()">
+        <span class="icon">☰</span>
+      </button>
+
+      <div class="sidebar-header">
+        <div
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-light text-decoration-none"
+        >
+          <span class="fs-4">Sidebar</span>
+        </div>
+      </div>
+      <hr />
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/security" class="nav-link active" aria-current="page">
+            Pending...
+          </a>
+        </li>
+        <li>
+          <a href="/security-accpected" class="nav-link link-light"
+            >Accpected</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1 class="text-center mb-4 fw-bold text-dark">Security Page</h1>
+      <ul class="list-unstyled">
+        <% values.forEach((value, index) => { %>
+        <li
+          id="item-<%= index %>"
+          class="bg-white shadow-sm rounded overflow-hidden d-flex flex-column flex-md-row align-items-center justify-content-between p-3 mb-3 border"
+        >
+          <!-- Image and Details -->
+          <div
+            class="d-flex align-items-center flex-column flex-md-row text-center text-md-start mb-3 mb-md-0"
+          >
+            <img
+              src="http://mbccet.com/img_small/<%= value.admno %>.jpg"
+              alt="<%= value.name %>"
+              class="me-md-3 mb-3 mb-md-0"
+              style="
+                width: 96px;
+                height: 96px;
+                object-fit: cover;
+                border-radius: 4px;
+              "
+            />
+            <div>
+              <h2 class="h5 fw-semibold text-dark mb-1"><%= value.name %></h2>
+              <p class="text-secondary mb-1">
+                Admission No: <%= value.admno %>
+              </p>
+              <p class="text-secondary mb-1">
+                Class: <%= value.class %>-<%= value.dept %>
+              </p>
+              <p class="text-secondary mb-1">Reason: <%= value.reason %></p>
+            </div>
+          </div>
+
+          <!-- Accept Button -->
+          <div>
+            <button
+              class="btn btn-success"
+              onclick="outCheck('<%= value.id %>', '<%= value.name %>', '<%= value.admno %>', '<%= value.class %>', '<%= value.dept %>', '<%= value.reason %>', 'accepted')"
+            >
+              Accept
+            </button>
+          </div>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <script src="js/toggle_btn.js"></script>
+    <script src="/js/sec_index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+body {
+  color: #0d0180;
+  min-height: 100vh;
+  background-color: rgb(215, 200, 255);
+}
+
+.card {
+  color: #0d0180;
+  background: rgb(231, 220, 215);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+
+.icon-circle {
+  width: 64px;
+  height: 64px;
+  border: 2px solid rgba(255, 115, 0, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.custom-button {
+  background-color: #0d0180;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #0b5ed7;
+  transform: translateY(-2px);
+}
+
+.page-title {
+  color: #fd810d;
+}
+p {
+  color: #0d0180;
+}

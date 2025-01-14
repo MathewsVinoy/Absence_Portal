@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Login - Absence Portal</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="container py-5">
+      <!-- Header Section -->
+      <div class="text-center mb-5">
+        <div class="d-flex justify-content-center mb-4">
+          <div class="header-bg p-3 rounded-circle shadow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="orange"
+              class="m-1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              />
+            </svg>
+          </div>
+        </div>
+        <h1 class="display-4 fw-bold page-title mb-3">Absence Portal</h1>
+        <p class="text-muted lead mx-auto" style="max-width: 600px">
+          Welcome to the College Leave of Absence Portal. Use this platform to
+          quickly request permission to leave campus for medical, personal, or
+          other reasons.
+        </p>
+      </div>
+
+      <!-- Cards Section -->
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Students Card -->
+        <div class="col">
+          <div class="card h-100 shadow border-0">
+            <div class="header-bg p-3">
+              <div
+                class="icon-circle rounded-circle mx-auto d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="orange"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title fw-bold mb-3">Students</h5>
+              <p class="card-text text-muted">
+                Submit and track your leave requests with ease
+              </p>
+              <a
+                class="btn custom-button text-white w-100 py-2 mt-3"
+                href="/student-login"
+              >
+                Login
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty Card -->
+        <div class="col">
+          <div class="card h-100 shadow border-0">
+            <div class="header-bg p-3">
+              <div
+                class="icon-circle rounded-circle mx-auto d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="orange"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title fw-bold mb-3">Faculty</h5>
+              <p class="card-text text-muted">
+                Review and manage student absence requests
+              </p>
+              <a
+                class="btn custom-button text-white w-100 py-2 mt-3"
+                href="/staff-login"
+              >
+                Login
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Card -->
+        <div class="col">
+          <div class="card h-100 shadow border-0">
+            <div class="header-bg p-3">
+              <div
+                class="icon-circle rounded-circle mx-auto d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="orange"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title fw-bold mb-3">Security</h5>
+              <p class="card-text text-muted">
+                Monitor and verify student departures
+              </p>
+              <br />
+              <a
+                class="btn custom-button text-white w-100 py-2 mt-3"
+                href="/security-login"
+              >
+                Login
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

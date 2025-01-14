@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.main-content {
+  margin-left: 0;
+  padding: 2rem;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar {
+  background-color: #e47303;
+  width: 280px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1rem;
+  z-index: 1001;
+  color: #ffffff;
+}
+
+.sidebar.active {
+  transform: translateX(0);
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.active + .main-content {
+  margin-left: 280px;
+}
+
+.sidebar a {
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.toggle-btn {
+  background-color: #004080;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  position: absolute;
+  top: 20px;
+  right: -60px;
+  z-index: 1002;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  width: 60px;
+  justify-content: center;
+}
+
+.toggle-btn:hover {
+  background-color: #005cb8;
+}
+
+.toggle-btn .icon {
+  transition: transform 0.3s ease;
+}
+
+.sidebar.active .toggle-btn .icon {
+  transform: rotate(180deg);
+}
+
+.nav-link.active {
+  background-color: #004080 !important;
+}
+
+.sidebar hr {
+  border-color: rgba(255, 255, 255, 0.2);
+  margin: 1rem 0;
+}
+
+.nav-pills .nav-link {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-header {
+  padding-right: 1rem;
+}
+
+.content-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}

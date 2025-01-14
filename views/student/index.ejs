@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/mainpage.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Sidebar with integrated toggle button -->
+    <div class="sidebar" id="sidebar">
+      <!-- Toggle Button -->
+      <button class="toggle-btn" onclick="toggleSidebar()">
+        <span class="icon">☰</span>
+      </button>
+
+      <div class="sidebar-header">
+        <div
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-light text-decoration-none"
+        >
+          <span class="fs-4">Sidebar</span>
+        </div>
+      </div>
+      <hr />
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/student" class="nav-link active" aria-current="page">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/student-requiests" class="nav-link link-light">Requiests</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1 class="text-center">Student Application Form</h1>
+      <form action="/student-submit" method="POST" class="mb-4">
+        <!-- Name -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <!-- Admission Number -->
+        <div class="mb-3">
+          <label for="admission_number" class="form-label"
+            >Admission Number</label
+          >
+          <input
+            type="text"
+            id="admission_number"
+            name="admission_number"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <!-- Class -->
+        <div class="mb-3">
+          <label for="class" class="form-label">Class</label>
+          <select id="class" name="class_yer" required class="form-select">
+            <option value="">Select Class</option>
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+            <option value="S3">S3</option>
+            <option value="S4">S4</option>
+            <option value="S5">S5</option>
+            <option value="S6">S6</option>
+            <option value="S7">S7</option>
+            <option value="S8">S8</option>
+          </select>
+        </div>
+
+        <!-- Department -->
+        <div class="mb-3">
+          <label for="department" class="form-label">Department</label>
+          <select
+            id="department"
+            name="department"
+            required
+            class="form-select"
+          >
+            <option value="">Select Department</option>
+            <option value="CE">Civil Engineering</option>
+            <option value="CSE">Computer Science & Engineering</option>
+            <option value="AI">
+              Computer Science & Engineering (Artificial Intelligence)
+            </option>
+            <option value="EEE">Electrical & Electronics Engineering</option>
+            <option value="ECE">Electronics & Communication Engineering</option>
+            <option value="ME">Mechanical Engineering</option>
+          </select>
+        </div>
+
+        <!-- Reason for Leave -->
+        <div class="mb-3">
+          <label for="reason" class="form-label">Reason for Leave</label>
+          <textarea
+            id="reason"
+            name="reason"
+            rows="4"
+            required
+            class="form-control"
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+          <button type="submit" class="btn custom-btn w-100">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="js/toggle_btn.js"></script>
+  </body>
+</html>

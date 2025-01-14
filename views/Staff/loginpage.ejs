@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/loginpage.css" rel="stylesheet" />
+  </head>
+  <body class="d-flex align-items-center justify-content-center vh-100">
+    <div
+      class="container d-flex align-items-center justify-content-center shadow custom-cont bg-white rounded"
+    >
+      <div class="container">
+        <h4 class="font-weight-bold text-center">Login For Students</h4>
+        <br />
+        <form action="/staff-login" method="POST">
+          <div class="mb-3">
+            <label for="admission_number" class="form-label font-weight-bold"
+              >Admission Number</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="admission_number"
+              name="admission_number"
+              required
+              aria-describedby="admission_number"
+            />
+          </div>
+          <div class="mb-3">
+            <label
+              for="exampleInputPassword1"
+              class="form-label font-weight-bold"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn custom-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
