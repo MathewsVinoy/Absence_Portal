@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const connection = require("./function/db");
+require("dotenv").config();
 const {
   getStudentData,
   getStudentDataForSec,
@@ -19,6 +20,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+const PORT = process.env.PORT || 3000;
+
 // Configure session middleware
 app.use(
   session({
@@ -28,8 +31,6 @@ app.use(
     cookie: { secure: false }, // Set `true` if using HTTPS
   })
 );
-
-const PORT = 3000;
 
 // Main page of starting page
 app.get("/", function (req, res) {
