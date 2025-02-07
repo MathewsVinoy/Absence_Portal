@@ -1,6 +1,6 @@
 import 'package:app/database/login.dart';
 import 'package:app/database/server.dart';
-import 'package:app/pages/homepage.dart';
+import 'package:app/pages/students/status_std.dart';
 import 'package:flutter/material.dart';
 
 Future loginCheck(

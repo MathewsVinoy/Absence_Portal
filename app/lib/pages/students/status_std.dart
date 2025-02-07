@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    futureOutPass = Server.getdata();
+    futureOutPass = Server.getdata("5747");
   }
 
   @override
