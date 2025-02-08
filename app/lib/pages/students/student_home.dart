@@ -5,7 +5,7 @@ class StdHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String _workingDay = 'yes';
+    String workingDay = 'yes';
     return Scaffold(
       body: Column(
         children: [
@@ -15,7 +15,7 @@ class StdHome extends StatelessWidget {
           RadioListTile<String>(
             title: const Text('Yes'),
             value: 'yes',
-            groupValue: _workingDay,
+            groupValue: workingDay,
             onChanged: (value) {
               // setState(() {
               //   _workingDay = value!;
@@ -25,7 +25,7 @@ class StdHome extends StatelessWidget {
           RadioListTile<String>(
             title: const Text('No'),
             value: 'no',
-            groupValue: _workingDay,
+            groupValue: workingDay,
             onChanged: (value) {
               // setState(() {
               //   _workingDay = value!;

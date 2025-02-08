@@ -1,4 +1,4 @@
-import 'package:app/functions/login_check.dart';
+import 'package:app/functions/google_sign.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,8 +9,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController adnoController = TextEditingController();
-  TextEditingController passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,24 +16,16 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          TextField(
-            controller: adnoController,
-          ),
-          TextField(
-            controller: passController,
-          ),
           ElevatedButton(
-            onPressed: () async {
-              await loginCheck(
-                adnoController.text,
-                passController.text,
-                context,
-              );
-            },
+            onPressed: signIn,
             child: Text("Login Page"),
           ),
         ],
       ),
     );
+  }
+
+  Future signIn() async {
+    await GoogleSignApi.login();
   }
 }
