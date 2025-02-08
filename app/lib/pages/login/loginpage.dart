@@ -1,4 +1,6 @@
+import 'package:app/database/login.dart';
 import 'package:app/functions/google_sign.dart';
+import 'package:app/pages/students/navebar_std.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -16,9 +18,11 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ElevatedButton(
-            onPressed: signIn,
-            child: Text("Login Page"),
+          Center(
+            child: ElevatedButton(
+              onPressed: signIn,
+              child: Text("Login Page"),
+            ),
           ),
         ],
       ),
@@ -26,6 +30,15 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future signIn() async {
-    await GoogleSignApi.login();
+    final user = await GoogleSignApi.login();
+    Login data = await loginCheck(user!.email);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => NaveBarStd(
+          data: data,
+        ),
+      ),
+    );
   }
 }

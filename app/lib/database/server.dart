@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'outpass.dart';
 
 class Server {
-  static const ROOT = 'http://192.168.17.210/miniproj/index.php';
+  static const ROOT = 'http://192.168.17.198/miniproj/index.php';
   static const _GET_ALL_ACTION = 'GET_ALL';
   static const _GET_LOGIN_ACTION = 'GET_LOGIN';
 
@@ -25,11 +25,11 @@ class Server {
     return <OutPass>[];
   }
 
-  static Future<List<Login>> getLoginTable(String queary) async {
+  static Future<List<Login>> getLoginTable(String query) async {
     try {
       var map = <String, dynamic>{};
       map['action'] = _GET_LOGIN_ACTION;
-      map['query'] = queary;
+      map['query'] = query;
       final response = await http.post(Uri.parse(ROOT), body: map);
       if (response.statusCode == 200) {
         List<Login> list = parseResponseLogin(response.body);
@@ -43,12 +43,18 @@ class Server {
   }
 
   static List<OutPass> parseResponse(String res) {
-    final parsed = json.decode(res) as List<dynamic>;
-    return parsed.map<OutPass>((json) => OutPass.fromJson(json)).toList();
+    final parsed = json.decode(res);
+    if (parsed is List) {
+      return parsed.map<OutPass>((json) => OutPass.fromJson(json)).toList();
+    }
+    return [];
   }
 
   static List<Login> parseResponseLogin(String res) {
-    final parsed = json.decode(res) as List<dynamic>;
-    return parsed.map<Login>((json) => Login.fromJson(json)).toList();
+    final parsed = json.decode(res);
+    if (parsed is List) {
+      return parsed.map<Login>((json) => Login.fromJson(json)).toList();
+    }
+    return [];
   }
 }
