@@ -3,9 +3,9 @@ const path = require("path");
 const ejs = require("ejs");
 
 // Define paths
-const srcFolder = path.join(__dirname, "views"); // EJS templates
-const distFolder = path.join(__dirname, "dist"); // Output folder
-const staticFolder = path.join(__dirname, "public"); // Static assets
+const srcFolder = path.join(__dirname, "views");
+const distFolder = path.join(__dirname, "dist");
+const staticFolder = path.join(__dirname, "public");
 
 // Ensure output directory exists
 fs.ensureDirSync(distFolder);
@@ -20,7 +20,6 @@ const compileEJS = () => {
 
       const template = fs.readFileSync(filePath, "utf-8");
 
-      // Render EJS with sample data (modify as needed)
       const html = ejs.render(template, {
         title: "My Express App",
       });

@@ -5,6 +5,8 @@ class Login {
   String userCategory;
   String semester;
   String branch;
+  String hLevel;
+  String subCategory;
 
   Login({
     required this.userid,
@@ -13,6 +15,8 @@ class Login {
     required this.userCategory,
     required this.semester,
     required this.branch,
+    required this.hLevel,
+    required this.subCategory,
   });
 
   factory Login.fromJson(Map<String, dynamic> json) {
@@ -23,6 +27,8 @@ class Login {
       userCategory: json['user_category'] as String,
       semester: json['semester'] as String,
       branch: json['branch'] as String,
+      hLevel: json['h_level'] as String,
+      subCategory: json['sub_category'] as String,
     );
   }
 }

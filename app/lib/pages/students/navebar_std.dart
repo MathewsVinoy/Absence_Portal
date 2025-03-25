@@ -3,21 +3,26 @@ import 'package:app/pages/students/homepage_std.dart';
 import 'package:app/pages/students/status_std.dart';
 import 'package:flutter/material.dart';
 
-class NaveBarStd extends StatefulWidget {
+class NavBarStd extends StatefulWidget {
   final Login data;
-  const NaveBarStd({super.key, required this.data});
+  const NavBarStd({super.key, required this.data});
 
   @override
-  State<NaveBarStd> createState() => _NaveBarStdState();
+  State<NavBarStd> createState() => _NavBarStdState();
 }
 
-class _NaveBarStdState extends State<NaveBarStd> {
+class _NavBarStdState extends State<NavBarStd> {
   int _selectedIndex = 0;
+  late final List<Widget> _pages;
 
-  static const List<Widget> _pages = <Widget>[
-    HomePage(),
-    StatusStd(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _pages = <Widget>[
+      StatusStd(data: widget.data),
+      HomePage(data: widget.data),
+    ];
+  }
 
   void _onItemTapped(int index) {
     setState(() {

@@ -69,8 +69,9 @@ app.get("/student-login", function (req, res) {
 
 // Staff section
 app.get("/staff", async function (req, res) {
+  const dept = req.session.dept;
   try {
-    const values = await getStudentData();
+    const values = await getStudentData(dept);
     res.render("Staff/index", { values });
   } catch (err) {
     console.error("Error fetching student data:", err);
@@ -78,8 +79,9 @@ app.get("/staff", async function (req, res) {
   }
 });
 app.get("/staff-accpected", async function (req, res) {
+  const dept = req.session.dept;
   try {
-    const values = await getStudentDataAcpt();
+    const values = await getStudentDataAcpt(dept);
     res.render("Staff/accpected", { values });
   } catch (err) {
     console.error("Error fetching student data:", err);
@@ -87,8 +89,9 @@ app.get("/staff-accpected", async function (req, res) {
   }
 });
 app.get("/staff-rejected", async function (req, res) {
+  const dept = req.session.dept;
   try {
-    const values = await getStudentDataRej();
+    const values = await getStudentDataRej(dept);
     res.render("Staff/rejected", { values });
   } catch (err) {
     console.error("Error fetching student data:", err);
@@ -176,7 +179,7 @@ app.post("/security-login", function (req, res) {
 
 app.post("/staff-login", function (req, res) {
   const { admission_number, password } = req.body;
-  const sql = "SELECT * FROM student WHERE username = ?";
+  const sql = "SELECT * FROM staff WHERE username = ?";
 
   connection.query(sql, [admission_number], function (err, result) {
     if (err) {
@@ -191,6 +194,7 @@ app.post("/staff-login", function (req, res) {
     const user = result[0];
     if (user.passward == password) {
       req.session.admission_number = admission_number; // Store in session
+      req.session.dept = user.dept;
       console.log("Login successful for:", admission_number);
       res.redirect("/staff");
     } else {

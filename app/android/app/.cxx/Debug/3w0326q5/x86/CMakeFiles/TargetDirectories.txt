@@ -1,0 +1,2 @@
+/media/mathewsvinoy/820831ee-706c-42e4-8979-f6876adb34d6/dev/Projects/mini_proj/app/android/app/.cxx/Debug/3w0326q5/x86/CMakeFiles/edit_cache.dir
+/media/mathewsvinoy/820831ee-706c-42e4-8979-f6876adb34d6/dev/Projects/mini_proj/app/android/app/.cxx/Debug/3w0326q5/x86/CMakeFiles/rebuild_cache.dir

@@ -1,9 +1,11 @@
+import 'package:app/database/login.dart';
 import 'package:app/database/outpass.dart';
 import 'package:app/database/server.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final Login data;
+  const HomePage({super.key, required this.data});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -15,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    futureOutPass = Server.getdata("5747");
+    futureOutPass = Server.getdata(widget.data.userid);
   }
 
   @override
@@ -38,10 +40,24 @@ class _HomePageState extends State<HomePage> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 OutPass outPass = snapshot.data![index];
-                return ListTile(
-                  title: Text('ID: ${outPass.id}'),
-                  subtitle:
-                      Text('Name: ${outPass.name}\nDate: ${outPass.admno}'),
+                return Card(
+                  child: ListTile(
+                    title:
+                        Text('Date: ${outPass.startDate} - ${outPass.endDate}'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Staff: ${outPass.staffStatus ?? 'Pending'}"),
+                            Text("HOD: ${outPass.hodStatus ?? 'Pending'}"),
+                          ],
+                        ),
+                        Text("Warden: ${outPass.wardenStatus ?? 'Pending'}"),
+                      ],
+                    ),
+                  ),
                 );
               },
             );

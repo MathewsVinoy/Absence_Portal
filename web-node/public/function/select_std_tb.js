@@ -1,9 +1,9 @@
 const connection = require("./db");
 
-function getStudentData() {
+function getStudentData(dept) {
   return new Promise((resolve, reject) => {
     connection.query(
-      "SELECT * FROM outpasstb WHERE state = 'pending..'",
+      `SELECT * FROM outpasstb WHERE state = 'pending..' AND dept = '${dept}'`,
       function (err, result, fields) {
         if (err) {
           return reject(err);
@@ -53,10 +53,10 @@ function studentRequiest(adno) {
     );
   });
 }
-function getStudentDataAcpt() {
+function getStudentDataAcpt(dept) {
   return new Promise((resolve, reject) => {
     connection.query(
-      "SELECT * FROM outpasstb WHERE state = 'accepted'",
+      `SELECT * FROM outpasstb WHERE state = 'accepted' AND dept = '${dept}'`,
       function (err, result, fields) {
         if (err) {
           return reject(err);
@@ -66,10 +66,10 @@ function getStudentDataAcpt() {
     );
   });
 }
-function getStudentDataRej() {
+function getStudentDataRej(dept) {
   return new Promise((resolve, reject) => {
     connection.query(
-      "SELECT * FROM outpasstb WHERE state = 'rejected'",
+      `SELECT * FROM outpasstb WHERE state = 'rejected' AND dept = '${dept}'`,
       function (err, result, fields) {
         if (err) {
           return reject(err);
