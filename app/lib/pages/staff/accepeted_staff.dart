@@ -40,18 +40,10 @@ class _AccepetedStaffState extends State<AccepetedStaff> {
               itemBuilder: (context, index) {
                 OutPass outPass = snapshot.data![index];
                 return Card(
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DetailsPageStaff()));
-                    },
-                    child: ListTile(
-                      title: Text('ID: ${outPass.admno}'),
-                      subtitle: Text(
-                          'Name: ${outPass.name}\nDate: ${outPass.endDate}'),
-                    ),
+                  child: ListTile(
+                    title: Text('ID: ${outPass.admno}'),
+                    subtitle:
+                        Text('Name: ${outPass.name}\nDate: ${outPass.endDate}'),
                   ),
                 );
               },
