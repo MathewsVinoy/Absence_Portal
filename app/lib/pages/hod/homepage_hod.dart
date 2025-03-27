@@ -2,6 +2,7 @@ import 'package:app/database/login.dart';
 import 'package:app/database/outpass.dart';
 import 'package:app/functions/accpect_reject.dart';
 import 'package:app/functions/get_queary.dart';
+import 'package:app/pages/hod/details_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePageHod extends StatefulWidget {
@@ -38,26 +39,32 @@ class _HomePageHodState extends State<HomePageHod> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 OutPass outPass = snapshot.data![index];
-                return ListTile(
-                  title: Text('ID: ${outPass.admno}'),
-                  subtitle:
-                      Text('Name: ${outPass.name}\nDate: ${outPass.admno}'),
-                  trailing: Column(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () async {
-                          await AccpectReject()
-                              .acceptedFun("HOD", outPass.admno);
-                        },
-                        child: Text("Accept"),
+                return Card(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailsPageHod(
+                                    outPass: outPass,
+                                    data: widget.data,
+                                  )));
+                    },
+                    child: ListTile(
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.network(
+                          'http://mbccet.com/img_small/${outPass.admno}.jpg', // Replace with actual image URL
+                          height: 150,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const Icon(Icons.error, size: 150),
+                        ),
                       ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          await AccpectReject().rejectFun("HOD", outPass.admno);
-                        },
-                        child: Text("Reject"),
-                      ),
-                    ],
+                      title: Text('ID: ${outPass.admno}'),
+                      subtitle: Text(
+                          'Name: ${outPass.name}\nDate: ${outPass.startDate} - ${outPass.endDate}'),
+                    ),
                   ),
                 );
               },
