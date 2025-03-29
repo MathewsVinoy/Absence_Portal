@@ -38,23 +38,38 @@ class _OutcheckSecState extends State<OutcheckSec> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 OutPass outPass = snapshot.data![index];
-                return ListTile(
-                  title: Text('ID: ${outPass.admno}'),
-                  subtitle:
-                      Text('Name: ${outPass.name}\nDate: ${outPass.admno}'),
-                  trailing: Column(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () async {
-                          await AccpectReject().secCheck(
-                            'OUT',
-                            outPass.admno,
-                            widget.data.username,
-                          );
-                        },
-                        child: Text("Accept"),
+                return Card(
+                  child: ListTile(
+                    leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.network(
+                        'http://mbccet.com/img_small/${outPass.admno}.jpg',
+                        height: 150,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(Icons.error, size: 150),
                       ),
-                    ],
+                    ),
+                    title: Text('ID: ${outPass.admno}'),
+                    subtitle:
+                        Text('Name: ${outPass.name}\nDate: ${outPass.admno}'),
+                    trailing: Column(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () async {
+                            await AccpectReject().secCheck(
+                              'OUT',
+                              outPass.admno,
+                              widget.data.username,
+                            );
+                            setState(() {
+                              futureOutPass = GetQueary().getSecOutData();
+                            });
+                          },
+                          child: Text("Accept"),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
