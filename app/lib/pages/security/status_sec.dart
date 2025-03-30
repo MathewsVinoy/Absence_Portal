@@ -37,7 +37,7 @@ class _StatusSecState extends State<StatusSec> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 OutPass outPass = snapshot.data![index];
-                return SizedBox(
+                return Card(
                   child: ListTile(
                     title: Text('ID: ${outPass.admno}'),
                     subtitle:
