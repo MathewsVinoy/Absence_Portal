@@ -1,6 +1,5 @@
 import 'package:app/database/login.dart';
 import 'package:app/database/outpass.dart';
-import 'package:app/functions/accpect_reject.dart';
 import 'package:app/functions/get_queary.dart';
 import 'package:app/pages/hod/details_page.dart';
 import 'package:flutter/material.dart';
