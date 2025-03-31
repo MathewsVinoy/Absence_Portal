@@ -1,7 +1,6 @@
 import 'package:app/database/login.dart';
 import 'package:app/database/outpass.dart';
 import 'package:app/database/server.dart';
-import 'package:app/pages/staff/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
