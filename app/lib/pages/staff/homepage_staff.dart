@@ -2,6 +2,7 @@ import 'package:app/database/login.dart';
 import 'package:app/database/outpass.dart';
 import 'package:app/database/server.dart';
 import 'package:app/functions/accpect_reject.dart';
+import 'package:app/pages/staff/details_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePageStaff extends StatefulWidget {
@@ -39,10 +40,31 @@ class _HomePageStaffState extends State<HomePageStaff> {
               itemBuilder: (context, index) {
                 OutPass outPass = snapshot.data![index];
                 return Card(
-                  child: ListTile(
-                    title: Text('ID: ${outPass.admno}'),
-                    subtitle:
-                        Text('Name: ${outPass.name}\nDate: ${outPass.endDate}'),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailsPageStaff(
+                                    outPass: outPass,
+                                    data: widget.data,
+                                  )));
+                    },
+                    child: ListTile(
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.network(
+                          'http://mbccet.com/img_small/${outPass.admno}.jpg', // Replace with actual image URL
+                          height: 150,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const Icon(Icons.error, size: 150),
+                        ),
+                      ),
+                      title: Text('ID: ${outPass.admno}'),
+                      subtitle: Text(
+                          'Name: ${outPass.name}\nDate: ${outPass.startDate} - ${outPass.endDate}'),
+                    ),
                   ),
                 );
               },
