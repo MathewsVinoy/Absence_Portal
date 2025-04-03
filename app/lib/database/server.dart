@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'outpass.dart';
 
 class Server {
-  static const ROOT = 'http://192.168.136.116/miniproj/index.php';
+  static const ROOT = 'http://172.20.10.4/miniproj/index.php';
   static const _GET_ALL_ACTION = 'GET_ALL';
   static const _GET_LOGIN_ACTION = 'GET_LOGIN';
   static const _ADD_REQ = "ADD_REQ";
@@ -50,7 +50,7 @@ class Server {
         var map2 = <String, dynamic>{};
         map2['action'] = _GET_ALL_ACTION;
         map2['query'] =
-            "SELECT * FROM outpassmob WHERE sem = '${value.semester}' AND dept = '${value.branch}' AND staff_status = 'pending'"; // ✅ Fix
+            "SELECT * FROM outpassmob WHERE sem = '${value.semester}' AND dept = '${value.branch}' AND staff_status = 'pending' AND workDay = 1"; // ✅ Fix
 
         final response2 = await http.post(Uri.parse(ROOT), body: map2);
 
@@ -107,7 +107,7 @@ class Server {
         var map2 = <String, dynamic>{};
         map2['action'] = _GET_ALL_ACTION;
         map2['query'] =
-            "SELECT * FROM outpassmob WHERE sem = '${value.semester}' AND dept = '${value.branch}' AND staff_status != 'pending'"; // ✅ Fix
+            "SELECT * FROM outpassmob WHERE sem = '${value.semester}' AND dept = '${value.branch}' AND staff_status != 'pending' AND workDay = 1"; // ✅ Fix
 
         final response2 = await http.post(Uri.parse(ROOT), body: map2);
 
