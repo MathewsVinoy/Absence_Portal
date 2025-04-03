@@ -154,7 +154,7 @@ app.post("/student-login", function (req, res) {
 
 app.post("/security-login", function (req, res) {
   const { admission_number, password } = req.body;
-  const sql = "SELECT * FROM student WHERE username = ?";
+  const sql = "SELECT * FROM security WHERE username = ?";
 
   connection.query(sql, [admission_number], function (err, result) {
     if (err) {
