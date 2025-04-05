@@ -18,14 +18,14 @@ class GetQueary {
 
   Future<List<OutPass>> getWardenData() async {
     String query =
-        "SELECT * FROM outpassmob WHERE hostel = 'true' AND hod_status = 'accepted'  AND warden_status = 'pending'";
+        "SELECT * FROM outpassmob WHERE hostel = 'true' AND (hod_status = 'accepted' OR workDay = 0)  AND warden_status = 'pending'";
     List<OutPass> data = await Server.getdataMain(query);
     return data;
   }
 
   Future<List<OutPass>> getWardenReq() async {
     String query =
-        "SELECT * FROM outpassmob WHERE hostel = 'true' AND hod_status = 'accepted' AND warden_status != 'pending'";
+        "SELECT * FROM outpassmob WHERE hostel = 'true' AND (hod_status = 'accepted' OR workDay = 0) AND warden_status != 'pending'";
     List<OutPass> data = await Server.getdataMain(query);
     return data;
   }
