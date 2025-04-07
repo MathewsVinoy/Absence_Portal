@@ -2,6 +2,10 @@ import 'package:app/database/login.dart';
 import 'package:app/database/outpass.dart';
 import 'package:app/database/server.dart';
 import 'package:app/pages/staff/details_page.dart';
+import 'package:app/ui/custom_appbar.dart';
+import 'package:app/ui/errormsg.dart';
+import 'package:app/ui/on_data.dart';
+import 'package:app/ui/pending_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePageStaff extends StatefulWidget {
@@ -24,50 +28,34 @@ class _HomePageStaffState extends State<HomePageStaff> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: customAppbar("Pending Requests"),
       body: FutureBuilder<List<OutPass>>(
         future: futureOutPass,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
+            return errormsg(snapshot.error.toString());
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No data available'));
+            return onData();
           } else {
             return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                OutPass outPass = snapshot.data![index];
-                return Card(
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DetailsPageStaff(
-                                    outPass: outPass,
-                                    data: widget.data,
-                                  )));
-                    },
-                    child: ListTile(
-                      leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: Image.network(
-                          'http://mbccet.com/img_small/${outPass.admno}.jpg', // Replace with actual image URL
-                          height: 150,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) =>
-                              const Icon(Icons.error, size: 150),
-                        ),
-                      ),
-                      title: Text('ID: ${outPass.admno}'),
-                      subtitle: Text(
-                          'Name: ${outPass.name}\nDate: ${outPass.startDate} - ${outPass.endDate}'),
-                    ),
-                  ),
-                );
-              },
-            );
+                padding: const EdgeInsets.all(8.0),
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  OutPass outPass = snapshot.data![index];
+                  return PendingCard(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailsPageStaff(
+                                      outPass: outPass,
+                                      data: widget.data,
+                                    )));
+                      },
+                      outPass: outPass);
+                });
           }
         },
       ),
