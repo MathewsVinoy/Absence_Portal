@@ -1,6 +1,7 @@
 import 'package:app/database/login.dart';
 import 'package:app/pages/hod/homepage_hod.dart';
 import 'package:app/pages/hod/status_hod.dart';
+import 'package:app/ui/color.dart';
 import 'package:flutter/material.dart';
 
 class NavBarHod extends StatefulWidget {
@@ -35,18 +36,23 @@ class _NavBarHodState extends State<NavBarHod> {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: white,
+        selectedItemColor: mainColor,
+        unselectedItemColor: primaryColor.withValues(alpha: 0.5),
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.circle),
-            label: 'Status',
+            icon: Icon(Icons.history),
+            label: 'History',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
       ),
     );
