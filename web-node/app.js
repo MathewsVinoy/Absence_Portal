@@ -11,6 +11,7 @@ const {
   getStudentDataAcpt,
   getStudentDataRej,
   getStudentDataForSecAcc,
+  getStudentData2,
 } = require("./public/function/select_std_tb");
 
 const app = express();
@@ -46,6 +47,17 @@ app.get("/student", function (req, res) {
   res.render("student/index", { admission_number });
 });
 
+app.get("/warden", async function (req, res) {
+  const dept = req.session.dept;
+  try {
+    const values = await getStudentData2(dept);
+    res.render("warden/index", { values });
+  } catch (err) {
+    console.error("Error fetching student data:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.get("/student-requiests", async function (req, res) {
   const admission_number = req.session.admission_number;
 
@@ -65,6 +77,10 @@ app.get("/student-requiests", async function (req, res) {
 
 app.get("/student-login", function (req, res) {
   res.render("student/loginpage");
+});
+
+app.get("/warden-login", function (req, res) {
+  res.render("warden/loginpage");
 });
 
 // Staff section
@@ -146,6 +162,31 @@ app.post("/student-login", function (req, res) {
       req.session.admission_number = admission_number; // Store in session
       console.log("Login successful for:", admission_number);
       res.redirect("/student");
+    } else {
+      res.status(401).send("Invalid admission number or password");
+    }
+  });
+});
+
+app.post("/warden-login", function (req, res) {
+  const { admission_number, password } = req.body;
+  const sql = "SELECT * FROM warden WHERE username = ?";
+
+  connection.query(sql, [admission_number], function (err, result) {
+    if (err) {
+      console.error("Error fetching data:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    if (result.length === 0) {
+      return res.status(401).send("Invalid admission number or password");
+    }
+
+    const user = result[0];
+    if (user.passward == password) {
+      req.session.admission_number = admission_number; // Store in session
+      console.log("Login successful for:", admission_number);
+      res.redirect("/warden");
     } else {
       res.status(401).send("Invalid admission number or password");
     }

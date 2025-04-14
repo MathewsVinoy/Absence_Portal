@@ -13,6 +13,19 @@ function getStudentData(dept) {
     );
   });
 }
+function getStudentData2() {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `SELECT * FROM outpasstb WHERE state = 'accepted'`,
+      function (err, result, fields) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(result);
+      }
+    );
+  });
+}
 function getStudentDataForSec() {
   return new Promise((resolve, reject) => {
     connection.query(
@@ -87,4 +100,5 @@ module.exports = {
   getStudentDataAcpt,
   getStudentDataRej,
   getStudentDataForSecAcc,
+  getStudentData2,
 };

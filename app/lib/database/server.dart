@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'outpass.dart';
 
 class Server {
-  static const ROOT = 'http://192.168.136.175/miniproj/index.php';
+  static const ROOT = 'http://192.168.245.201/miniproj/index.php';
   static const _GET_ALL_ACTION = 'GET_ALL';
   static const _GET_LOGIN_ACTION = 'GET_LOGIN';
   static const _ADD_REQ = "ADD_REQ";

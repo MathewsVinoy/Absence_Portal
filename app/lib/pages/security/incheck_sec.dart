@@ -3,6 +3,7 @@ import 'package:app/database/outpass.dart';
 import 'package:app/functions/accpect_reject.dart';
 import 'package:app/functions/get_queary.dart';
 import 'package:app/ui/color.dart';
+import 'package:app/ui/custom_appbar.dart';
 import 'package:app/ui/errormsg.dart';
 import 'package:app/ui/on_data.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class _IncheckSecState extends State<IncheckSec> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: customAppbar("In Coming List"),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -162,7 +164,7 @@ class _IncheckSecState extends State<IncheckSec> {
                                   widget.data.username,
                                 );
                                 setState(() {
-                                  futureOutPass = GetQueary().getSecInData();
+                                  futureOutPass = GetQueary().getSecOutData();
                                 });
                               },
                               icon: const Icon(Icons.check_circle_outline),
