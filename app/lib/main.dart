@@ -1,9 +1,6 @@
 import 'package:app/database/login.dart';
-import 'package:app/pages/hod/nav_bar_hod.dart';
 import 'package:app/pages/security/nav_bar_sec.dart';
-import 'package:app/pages/staff/nav_bar_staff.dart';
-import 'package:app/pages/students/navebar_std.dart';
-import 'package:app/pages/warden/nav_bar_warden.dart';
+
 import 'package:app/ui/color.dart';
 import 'package:flutter/material.dart';
 
